@@ -21,13 +21,18 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <nav class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link active" href="#">Home</a>
-                    <a class="nav-item nav-link" href="#">Blog</a>
-                    <a class="nav-item nav-link" href="#">Contacto</a>
-                </nav>
-            </div>
+            <?php 
+                wp_nav_menu( array(
+                    'theme_location'  => 'menu-principal',
+                    'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+                    'container'       => 'div',
+                    'container_class' => 'collapse navbar-collapse',
+                    'container_id'    => 'navbarSupportedContent',
+                    'menu_class'      => 'navbar-nav ml-auto',
+                    'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+                    'walker'          => new WP_Bootstrap_Navwalker(),
+                ) );
+            ?>
         </div>
     </div>
 </nav>

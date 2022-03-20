@@ -13,7 +13,13 @@
                         <p class="small mb-0">Autor: <?php the_author(); ?></p>
                         <p class="small mb-0">Categorias: <?php the_category(', '); ?></p>
                         <p class="small">Etiquetas: <?php the_tags('', ', ', '') ?></p>
-                        <img src="img/1200.jpg" alt="Imagen blog" class="img-fluid mb-3">
+                        
+                        <?php 
+                            if(has_post_thumbnail()) {
+                                the_post_thumbnail('post-thumbnail', array( 'class' => 'img-fluid mb-3' ) );
+                            }
+                        ?>
+                        
                         <?php the_content(); ?>
                     </div>
                     <!-- Fin Entrada -->
@@ -24,14 +30,10 @@
             </div>
             <!-- Fin Entradas -->
 
-            <!-- Aside -->
-            <div class="col-md-3">
-                <div class="card-body">
-                    <h4>Publicidad</h4>
-                    <hr>
-                    <img src="img/vertical.jpg" alt="Publicidad" class="img-fluid">
-                </div>
-            </div>
+             <!-- Aside -->
+             <?php 
+                get_sidebar();
+            ?>
             <!-- Fin Aside -->
         </div>
 
