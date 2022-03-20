@@ -15,7 +15,11 @@
                         <p class="small mb-0">Autor: <?php the_author(); ?></p>
                         <p class="small mb-0">Categorias: <?php the_category(', '); ?></p>
                         <p class="small">Etiquetas: <?php the_tags('', ', ', '') ?></p>
-                        <img src="img/1200.jpg" alt="Imagen blog" class="img-fluid mb-3">
+                        <?php 
+                            if(has_post_thumbnail()) {
+                                the_post_thumbnail('post-thumbnail', array( 'class' => 'img-fluid mb-3' ) );
+                            }
+                        ?>
                         <?php the_excerpt(); ?>
                         <a href="single.html" class="btn btn-primary">Mas información</a>
                     </div>
@@ -23,19 +27,10 @@
 
                 <?php endwhile; endif; ?>
                 
-
               
                 <!-- Paginador -->
                 <div class="card-body">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                        </ul>
-                    </nav>
+                    <?php get_template_part('template-parts/content', 'paginacion') ?>
                 </div>
                 <!-- Fin Paginador -->
             </div>
