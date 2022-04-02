@@ -14,12 +14,6 @@ function register_navwalker(){
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
 
-
-// Soporte imagenes destacadas
-if ( function_exists( 'add_theme_support' ) ) {
-    add_theme_support( 'post-thumbnails' );
-}
-
 // Agregar sidebar
 function wp_bootstrap_blog_widgets() {
     register_sidebar(
@@ -46,3 +40,13 @@ function wp_bootstrap_blog_register_my_menus() {
 }
 add_action( 'init', 'wp_bootstrap_blog_register_my_menus' );
 
+
+function wp_bootstrap_blog_setup() {
+    // Soporte imagenes destacadas
+    if ( function_exists( 'add_theme_support' ) ) {
+        add_theme_support( 'post-thumbnails' );
+    }
+
+    add_theme_support('title-tag');
+}
+add_action('after_setup_theme', 'wp_bootstrap_blog_setup');

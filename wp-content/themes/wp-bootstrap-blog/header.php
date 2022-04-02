@@ -1,23 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html <?php language_attributes() ;?>>
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>WP & Bootstrap Blog</title>
+    <title>
+        <?php 
+            if(is_page( $page = 'blog' ) ){
+                echo 'WP & Bootstrap Blog';
+            } else{
+                echo wp_title(); 
+            }
+        ?>
+    </title>
 
     <?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 
 <!-- Menu Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">WP & Bootstrap Blog</a>
+            <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">WP & Bootstrap Blog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
